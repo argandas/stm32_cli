@@ -23,7 +23,7 @@ uint8_t usb_hid_presenter_execute(usb_hid_presenter_action_e action)
 {
 	uint8_t ret = 0;
 
-	if ((0 < action) && (PPT_BTN_MAX > action))
+	if ((0 <= action) && (PPT_BTN_MAX > action))
 	{
 		if (0 < usb_hid_keyboard_press_and_release_key(ppt_action_tables[action].mod, ppt_action_tables[action].key))
 		{
@@ -38,7 +38,7 @@ char* usb_hid_presenter_action_string(usb_hid_presenter_action_e action)
 {
 	char* str = NULL;
 
-	if ((0 < action) && (PPT_BTN_MAX > action))
+	if ((0 <= action) && (PPT_BTN_MAX > action))
 	{
 		str = ppt_action_tables[action].description;
 	}

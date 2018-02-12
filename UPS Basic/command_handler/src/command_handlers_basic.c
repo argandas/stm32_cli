@@ -31,7 +31,7 @@
 #include "console.h"
 
 #include "usb_hid_presenter.h"
-
+#include "usb_hid_keyboard_to_ascii.h"
 
 /*****************************************************************************
  * Macros
@@ -62,8 +62,11 @@
  *****************************************************************************/
 
 uint8_t cmd_handler_start(char* data_ptr, uint16_t length_ptr)
- {
+{
 	cmd_response_t ret = CMD_RSP_ERR_UNABLE_TO_PROCESS;
+
+	usb_hid_presenter_execute(PPT_BTN_ALT_TAB);
+
 	if (0 < usb_hid_presenter_execute(PPT_BTN_START))
 	{
 		ret = CMD_RSP_OK;
@@ -71,19 +74,12 @@ uint8_t cmd_handler_start(char* data_ptr, uint16_t length_ptr)
 	return ret;
 }
 
-uint8_t cmd_handler_stop(char* data_ptr, uint16_t length_ptr)
- {
-	cmd_response_t ret = CMD_RSP_ERR_UNABLE_TO_PROCESS;
-	if (0 < usb_hid_presenter_execute(PPT_BTN_STOP))
-	{
-		ret = CMD_RSP_OK;
-	}
-	return ret;
-}
-
 uint8_t cmd_handler_end(char* data_ptr, uint16_t length_ptr)
- {
+{
 	cmd_response_t ret = CMD_RSP_ERR_UNABLE_TO_PROCESS;
+
+	usb_hid_presenter_execute(PPT_BTN_ALT_TAB);
+
 	if (0 < usb_hid_presenter_execute(PPT_BTN_END))
 	{
 		ret = CMD_RSP_OK;
@@ -92,8 +88,11 @@ uint8_t cmd_handler_end(char* data_ptr, uint16_t length_ptr)
 }
 
 uint8_t cmd_handler_prev(char* data_ptr, uint16_t length_ptr)
- {
+{
 	cmd_response_t ret = CMD_RSP_ERR_UNABLE_TO_PROCESS;
+
+	usb_hid_presenter_execute(PPT_BTN_ALT_TAB);
+
 	if (0 < usb_hid_presenter_execute(PPT_BTN_PREV))
 	{
 		ret = CMD_RSP_OK;
@@ -102,11 +101,47 @@ uint8_t cmd_handler_prev(char* data_ptr, uint16_t length_ptr)
 }
 
 uint8_t cmd_handler_next(char* data_ptr, uint16_t length_ptr)
- {
+{
 	cmd_response_t ret = CMD_RSP_ERR_UNABLE_TO_PROCESS;
+
+	usb_hid_presenter_execute(PPT_BTN_ALT_TAB);
+
 	if (0 < usb_hid_presenter_execute(PPT_BTN_NEXT))
 	{
 		ret = CMD_RSP_OK;
 	}
+	return ret;
+}
+
+uint8_t cmd_handler_white(char* data_ptr, uint16_t length_ptr)
+{
+	cmd_response_t ret = CMD_RSP_ERR_UNABLE_TO_PROCESS;
+
+	usb_hid_presenter_execute(PPT_BTN_ALT_TAB);
+
+	if (0 < usb_hid_presenter_execute(PPT_BTN_WHT_SCR))
+	{
+		ret = CMD_RSP_OK;
+	}
+	return ret;
+}
+
+uint8_t cmd_handler_black(char* data_ptr, uint16_t length_ptr)
+{
+	cmd_response_t ret = CMD_RSP_ERR_UNABLE_TO_PROCESS;
+
+	usb_hid_presenter_execute(PPT_BTN_ALT_TAB);
+
+	if (0 < usb_hid_presenter_execute(PPT_BTN_BLK_SCR))
+	{
+		ret = CMD_RSP_OK;
+	}
+	return ret;
+}
+
+uint8_t cmd_handler_hello(char* data_ptr, uint16_t length_ptr)
+{
+	cmd_response_t ret = CMD_RSP_OK;
+	usb_hid_keyboard_send_string("Hello World!");
 	return ret;
 }

@@ -159,7 +159,7 @@ static uint8_t execute_command_callback(uint16_t idx, const char* cmd_ptr, uint1
 	/* Index shall be bigger than zero and lower than cmd_handlers_common_table_size() */
 	if((0 <= idx) && (idx < cmd_handlers_common_table_size()))
 	{
-#if 0
+#if 1
 		/* Index is valid, print command name */
 		cli_printfln("Command: \"%s\"", cmd_handlers_common_table()[idx].cmd_desc);
 #endif

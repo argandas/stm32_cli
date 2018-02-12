@@ -78,7 +78,31 @@ uint8_t cmd_handler_next(char* data_ptr, uint16_t length_ptr);
  * @param       length_ptr - Length of incoming data
  * @return      return CMD_RSP_OK if success.
  *****************************************************************************/
+uint8_t cmd_handler_white(char* data_ptr, uint16_t length_ptr);
+
+/*****************************************************************************//**
+ * @brief       Display dummy function name.
+ * @param       data_ptr - Pointer to command data
+ * @param       length_ptr - Length of incoming data
+ * @return      return CMD_RSP_OK if success.
+ *****************************************************************************/
+uint8_t cmd_handler_black(char* data_ptr, uint16_t length_ptr);
+
+/*****************************************************************************//**
+ * @brief       Display dummy function name.
+ * @param       data_ptr - Pointer to command data
+ * @param       length_ptr - Length of incoming data
+ * @return      return CMD_RSP_OK if success.
+ *****************************************************************************/
 uint8_t cmd_handler_prev(char* data_ptr, uint16_t length_ptr);
+
+/*****************************************************************************//**
+ * @brief       Display dummy function name.
+ * @param       data_ptr - Pointer to command data
+ * @param       length_ptr - Length of incoming data
+ * @return      return CMD_RSP_OK if success.
+ *****************************************************************************/
+uint8_t cmd_handler_hello(char* data_ptr, uint16_t length_ptr);
 
 #endif /* _COMMAND_HANDLERS_BASIC_H_ */
 

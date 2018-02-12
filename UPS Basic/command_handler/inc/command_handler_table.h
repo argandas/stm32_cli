@@ -37,12 +37,14 @@
 
 #define CMD_COMMON_DEF_TABLE_X(num, desc, handler, num_params)
 #define CMD_COMMON_DEF_TABLE \
-    /* ------------------- Identifier, --- "Command", --- # of chars, - "Description", --- Handler, ---------- #parameters -- */\
-	CMD_COMMON_DEF_TABLE_X(CMD_START,      "AT+START",    8,            "Start" ,          cmd_handler_start,  0               )\
-	CMD_COMMON_DEF_TABLE_X(CMD_STOP,       "AT+STOP",     7,            "Stop" ,           cmd_handler_stop,   0               )\
-	CMD_COMMON_DEF_TABLE_X(CMD_END,        "AT+END",      6,            "End" ,            cmd_handler_end,    0               )\
-	CMD_COMMON_DEF_TABLE_X(CMD_NEXT,       "AT+NEXT",     7,            "Next" ,           cmd_handler_next,   0               )\
-	CMD_COMMON_DEF_TABLE_X(CMD_PREV,       "AT+PREV",     7,            "Prev" ,           cmd_handler_prev,   0               )\
+    /* ------------------- Identifier, --- "Command", ------ # chars, --- "Description", -------- Handler, ---------- #parameters -- */\
+	CMD_COMMON_DEF_TABLE_X(CMD_START,      "PRESN+START",    11,          "Start Presentation",   cmd_handler_start,  0               )\
+	CMD_COMMON_DEF_TABLE_X(CMD_END,        "PRESN+END",       9,          "End Presentation",     cmd_handler_end,    0               )\
+	CMD_COMMON_DEF_TABLE_X(CMD_NEXT,       "PRESN+NEXT",     10,          "Next Slide",           cmd_handler_next,   0               )\
+	CMD_COMMON_DEF_TABLE_X(CMD_PREV,       "PRESN+PREV",     10,          "Previous Slide",       cmd_handler_prev,   0               )\
+	CMD_COMMON_DEF_TABLE_X(CMD_WHITE,      "PRESN+WHITE",    11,          "Blank White Slide",    cmd_handler_white,  0               )\
+	CMD_COMMON_DEF_TABLE_X(CMD_BLACK,      "PRESN+BLACK",    11,          "Blank Black Slide",    cmd_handler_black,  0               )\
+	CMD_COMMON_DEF_TABLE_X(CMD_HELLO,      "PRESN+TXT",       9,          "Hello World!",         cmd_handler_hello,  0               )\
 
 #undef CMD_COMMON_DEF_TABLE_X
 

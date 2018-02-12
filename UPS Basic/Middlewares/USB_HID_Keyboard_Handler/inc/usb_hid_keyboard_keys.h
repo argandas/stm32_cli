@@ -99,6 +99,8 @@
 #define USB_HID_KEY_TAB         0x2B
 #define USB_HID_KEY_SPACE       0x2C
 #define USB_HID_KEY_SCORE       0x2D
+#define USB_HID_KEY_COMMA       0x36
+#define USB_HID_KEY_PERIOD      0x37
 #define USB_HID_KEY_CAPS_LOCK   0x39
 #define USB_HID_KEY_PTR_SCR     0x46
 #define USB_HID_KEY_SCROLL_LOCK 0x47
