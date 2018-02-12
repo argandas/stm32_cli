@@ -77,9 +77,7 @@ static void cmd_parser_reset(void)
 
 static void echo_command(uint8_t* cmd_ptr, uint16_t len)
 {
-	cli_print("Received: ");
-	cli_write(cmd_ptr, len);
-	cli_println(NULL);
+	cli_printfln("Received: %s", cmd_ptr);
 }
 
 /*****************************************************************************
@@ -96,6 +94,7 @@ void cmd_parser_setup(void)
 		osDelay(10);
 	}
 
+	cli_println(NULL);
     cli_print_header("Command Parser Example");
 	cli_print_cursor();
 
@@ -179,7 +178,6 @@ void cmd_parser_loop(uint8_t verbose)
 			cmd_parser_reset();
 		}
 
-
 		/* Command complete OR empty, print cursor */
 		if ('\r' == curr_char)
 		{
@@ -191,7 +189,9 @@ void cmd_parser_loop(uint8_t verbose)
 /* start_cmd_parser_task function */
 void start_cmd_parser_task(void const * argument)
 {
-	cmd_parser_setup();
+  cli_init();
+
+  cmd_parser_setup();
 
 	/* Infinite loop */
 	for (;;)

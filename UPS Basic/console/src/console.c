@@ -289,6 +289,7 @@ uint16_t cli_printfln(const char* fmt, ...)
 
 uint16_t cli_write(const char* src, uint16_t len)
 {
+	uint16_t sent = 0;
 #ifdef CLI_UART_HANDLE
 	if (TRUE == cli_debug_enabled())
 	{

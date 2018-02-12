@@ -12,6 +12,7 @@ RM := rm -rf
 -include console/src/subdir.mk
 -include cmd_parser/src/subdir.mk
 -include Src/subdir.mk
+-include Middlewares/USB_HID_Keyboard_Handler/src/subdir.mk
 -include Middlewares/USB_CDC_Handler/src/subdir.mk
 -include Middlewares/USART_Handler/src/subdir.mk
 -include Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/subdir.mk

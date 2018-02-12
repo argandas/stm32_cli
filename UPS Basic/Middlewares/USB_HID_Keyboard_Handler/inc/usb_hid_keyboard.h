@@ -8,7 +8,7 @@
 #ifndef USB_HID_KEYBOARD_H_
 #define USB_HID_KEYBOARD_H_
 
-#include "stm32l4xx_hal.h"
+#include "stm32f4xx_hal.h"
 #include "usb_hid_keyboard_keys.h"
 
 typedef struct {

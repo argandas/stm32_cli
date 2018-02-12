@@ -16,6 +16,7 @@
 #include "freertos.h"
 #include "utils.h"
 #include "sprintf.h"
+#include "cmsis_os.h"
 
 /*****************************************************************************
  * Macros
@@ -30,6 +31,8 @@
 /*****************************************************************************
  * Global Declarations
  *****************************************************************************/
+
+extern osSemaphoreId usbTxSemaphoreHandle;
 
 /*****************************************************************************
  * Static Declarations
@@ -82,7 +85,7 @@ static USBD_StatusTypeDef usb_transmit(uint32_t wait_msec, uint8_t* src, uint16_
 			len = MAX_PRINT_LEN;
 		}
 
-//		if (osOK == osSemaphoreWait(usbTxSemaphoreHandle, wait_msec))
+		if (osOK == osSemaphoreWait(usbTxSemaphoreHandle, wait_msec))
 		{
 			/* Set buffer data */
 			memcpy((uint8_t*) &txholdbuf[0], src, len);
@@ -115,7 +118,7 @@ static USBD_StatusTypeDef usb_transmit(uint32_t wait_msec, uint8_t* src, uint16_
 			{
 				/* problem with USB! USB should be in sync with mutex */
 				usbtx_reject2++;
-//				osSemaphoreRelease(usbTxSemaphoreHandle);
+				osSemaphoreRelease(usbTxSemaphoreHandle);
 			}
 		}
 //		else

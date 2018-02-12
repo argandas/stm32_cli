@@ -1,0 +1,10 @@
+CONVERTING	C:\git\stm32_cli\UPS Basic\Debug\UPS Basic.elf
+LOADING	C:\git\stm32_cli\UPS Basic\Debug\UPS Basic.elf
+ANALYZING
+ANALYZING
+LOADING 	28800 bytes
+Download monitor
+	DONEPrograming sector number 0
+	DONEPrograming sector number 1
+	DONEWrite to FLASH
+	DONE

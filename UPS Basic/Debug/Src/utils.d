@@ -1,4 +1,3 @@
-Src/utils.o: ../Src/utils.c \
- C:/Users/Argandas/Desktop/UPS\ Basic/Inc/utils.h
+Src/utils.o: ../Src/utils.c C:/git/stm32_cli/UPS\ Basic/Inc/utils.h
 
-C:/Users/Argandas/Desktop/UPS\ Basic/Inc/utils.h:
+C:/git/stm32_cli/UPS\ Basic/Inc/utils.h:

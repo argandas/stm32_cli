@@ -16,6 +16,7 @@
 #include "freertos.h"
 #include <string.h>
 #include "console.h"
+#include "cmsis_os.h"
 
 /*****************************************************************************
  * Macros
@@ -95,31 +96,50 @@ static uint16_t uart_transmit(UART_HandleTypeDef *huart, uint32_t timeout, uint8
 				len = MAX_PRINT_LEN;
 			}
 
-//			taskDISABLE_INTERRUPTS();
-			status = HAL_UART_Transmit_DMA(huart, (uint8_t*)src, len);
-//			taskENABLE_INTERRUPTS();
-
-			if(HAL_OK == status)
+			for(status = HAL_BUSY; HAL_BUSY == status;)
 			{
-				for(status = HAL_BUSY; (HAL_BUSY == status);)
+				portDISABLE_INTERRUPTS();
+				status = HAL_UART_Transmit_DMA(huart, (uint8_t*)src, len);
+				portENABLE_INTERRUPTS();
+
+				if (HAL_OK == status)
 				{
-					/* Check for the timeout */
-					uart_state = HAL_UART_GetState(huart);
-					if (timeout != HAL_MAX_DELAY)
+					/* DMA was successful, wait for it to finish */
+					for(status = HAL_BUSY; (HAL_BUSY == status);)
 					{
-						if((uart_state != HAL_UART_STATE_BUSY_TX) && (uart_state != HAL_UART_STATE_BUSY_TX_RX))
+						/* Check for the timeout */
+						uart_state = HAL_UART_GetState(huart);
+						if (timeout != HAL_MAX_DELAY)
 						{
-							bytes_sent = (uint16_t)(huart->TxXferSize - huart->TxXferCount);
-							status = HAL_OK;
+							if((uart_state != HAL_UART_STATE_BUSY_TX) && (uart_state != HAL_UART_STATE_BUSY_TX_RX))
+							{
+								bytes_sent = (uint16_t)(huart->TxXferSize - huart->TxXferCount);
+								status = HAL_OK;
+							}
+							else if ((timeout == 0U) || ((HAL_GetTick() - Tickstart) > timeout))
+							{
+								status = HAL_TIMEOUT;
+							}
 						}
-						else if ((timeout == 0U) || ((HAL_GetTick() - Tickstart) > timeout))
-						{
-							status = HAL_TIMEOUT;
-						}
+						osDelay(1);
 					}
-					osDelay(1);
+				}
+				/* HAL_BUSY? */
+				else if (HAL_BUSY == status)
+				{
+					if ((timeout == 0U) || ((HAL_GetTick() - Tickstart) > timeout))
+					{
+						status = HAL_TIMEOUT;
+					}
+				}
+				/* HAL_ERROR or HAL_TIMEOUT */
+				else
+				{
+					bytes_sent = 0;
+					/* Do nothing */
 				}
 			}
+
 		}
     }
 

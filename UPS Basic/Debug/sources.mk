@@ -24,6 +24,7 @@ Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F \
 Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang \
 Middlewares/USART_Handler/src \
 Middlewares/USB_CDC_Handler/src \
+Middlewares/USB_HID_Keyboard_Handler/src \
 Src \
 cmd_parser/src \
 console/src \

@@ -112,7 +112,6 @@ int main(void)
   MX_USART2_UART_Init();
   MX_CRC_Init();
   /* USER CODE BEGIN 2 */
-  cli_init();
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in freertos.c) */
