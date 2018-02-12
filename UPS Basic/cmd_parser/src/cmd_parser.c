@@ -98,8 +98,7 @@ void cmd_parser_setup(void)
     cli_print_header("Command Parser Example");
 	cli_print_cursor();
 
-//	cmd_parser_callback_register(handle_complete_command);
-	cmd_parser_callback_register(echo_command);
+	cmd_parser_callback_register(handle_complete_command);
 
 	cmd_parser_reset();
 }
