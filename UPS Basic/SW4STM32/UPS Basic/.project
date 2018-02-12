@@ -25,6 +25,10 @@
 		<nature>fr.ac6.mcu.ide.core.MCUProjectNature</nature>
 	</natures>
 	<linkedResources><link>
+      <name>Middlewares/USB_Device_Library/usbd_hid.c</name>
+      <type>1</type>
+      <location>PARENT-2-PROJECT_LOC/Middlewares/ST/STM32_USB_Device_Library/Class/HID/Src/usbd_hid.c</location>
+    </link><link>
       <name>Application/User/crc.c</name>
       <type>1</type>
       <location>PARENT-2-PROJECT_LOC/Src/crc.c</location>
@@ -166,11 +170,7 @@
 			<type>1</type>
 			<location>PARENT-2-PROJECT_LOC/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c</location>
 		</link>
-    <link>
-			<name>Application/User/usbd_cdc_if.c</name>
-			<type>1</type>
-			<location>PARENT-2-PROJECT_LOC/Src/usbd_cdc_if.c</location>
-		</link>
+    
     <link>
 			<name>Drivers/STM32F4xx_HAL_Driver/stm32f4xx_hal.c</name>
 			<type>1</type>
@@ -246,11 +246,7 @@
 			<type>1</type>
 			<location>PARENT-2-PROJECT_LOC/Src/system_stm32f4xx.c</location>
 		</link>
-    <link>
-			<name>Middlewares/USB_Device_Library/usbd_cdc.c</name>
-			<type>1</type>
-			<location>PARENT-2-PROJECT_LOC/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c</location>
-		</link>
+    
     <link>
 			<name>Drivers/STM32F4xx_HAL_Driver/stm32f4xx_hal_dma.c</name>
 			<type>1</type>

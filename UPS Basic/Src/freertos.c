@@ -58,7 +58,7 @@
 /* Variables -----------------------------------------------------------------*/
 osThreadId defaultTaskHandle;
 osThreadId cmd_parserHandle;
-osSemaphoreId usbTxSemaphoreHandle;
+osSemaphoreId usbTxSemaphoreHandleHandle;
 
 /* USER CODE BEGIN Variables */
 
@@ -90,8 +90,8 @@ void MX_FREERTOS_Init(void) {
 
   /* Create the semaphores(s) */
   /* definition and creation of usbTxSemaphoreHandle */
-  osSemaphoreDef(usbTxSemaphore);
-  usbTxSemaphoreHandle = osSemaphoreCreate(osSemaphore(usbTxSemaphore), 1);
+  osSemaphoreDef(usbTxSemaphoreHandle);
+  usbTxSemaphoreHandleHandle = osSemaphoreCreate(osSemaphore(usbTxSemaphoreHandle), 1);
 
   /* USER CODE BEGIN RTOS_SEMAPHORES */
   /* add semaphores, ... */

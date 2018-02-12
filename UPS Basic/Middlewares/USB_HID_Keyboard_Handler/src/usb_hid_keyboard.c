@@ -7,7 +7,7 @@
 
 #include "usb_hid_keyboard.h"
 #include "usb_device.h"
-//#include "usbd_hid.h"
+#include "usbd_hid.h"
 
 usb_hid_keyboard_t usb_hid_keyboard;
 

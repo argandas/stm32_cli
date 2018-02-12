@@ -17,7 +17,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "stm32f427xx.h"
+#include "stm32f401xe.h"
 
 #include "utils.h"
 #include "console.h"

@@ -17,7 +17,6 @@
 
 #include "cmsis_os.h"
 #include "stm32f4xx_hal_def.h"
-#include "usbd_cdc_if.h"
 
 #include "usart_handler.h"
 #include "usb_cdc_handler.h"
@@ -293,9 +292,12 @@ uint16_t cli_write(const char* src, uint16_t len)
 #ifdef CLI_UART_HANDLE
 	if (TRUE == cli_debug_enabled())
 	{
-		(void) uart_write(&CLI_UART_HANDLE, UART_TX_MAX_WAIT_MS, (uint8_t*)src, len);
+		sent = uart_write(&CLI_UART_HANDLE, UART_TX_MAX_WAIT_MS, (uint8_t*)src, len);
 	}
 #endif
 
-	return usb_cdc_write(USB_TX_MAX_WAIT_MS, (uint8_t*)src, len);
+#if 0
+	usb_cdc_write(USB_TX_MAX_WAIT_MS, (uint8_t*)src, len);
+#endif
+	return sent;
 }

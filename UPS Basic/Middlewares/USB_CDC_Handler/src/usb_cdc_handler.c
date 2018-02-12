@@ -11,7 +11,7 @@
  *****************************************************************************/
 
 #include "usb_cdc_handler.h"
-#include "usbd_cdc_if.h"
+//#include "usbd_cdc_if.h"
 #include "usb_device.h"
 #include "freertos.h"
 #include "utils.h"
@@ -92,7 +92,7 @@ static USBD_StatusTypeDef usb_transmit(uint32_t wait_msec, uint8_t* src, uint16_
 
 			for (retries = 0; (retries < 3) && (status == USBD_BUSY); retries++)
 			{
-				if(0 == ((USBD_CDC_HandleTypeDef*)(hUsbDeviceFS.pClassData))->TxState)
+//				if(0 == ((USBD_CDC_HandleTypeDef*)(hUsbDeviceFS.pClassData))->TxState)
 				{
 //					taskENTER_CRITICAL();
 					status = CDC_Transmit_FS((uint8_t*) &txholdbuf[0], (uint16_t) len);
@@ -107,11 +107,11 @@ static USBD_StatusTypeDef usb_transmit(uint32_t wait_msec, uint8_t* src, uint16_
 						usbtx_reject1++;
 					}
 				}
-				else
-				{
-					/* Wait before retry */
-					osDelay(1);
-				}
+//				else
+//				{
+//					/* Wait before retry */
+//					osDelay(1);
+//				}
 			}
 
 			if (USBD_OK != status)

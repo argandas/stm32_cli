@@ -14,6 +14,7 @@
 
 #include "string.h"
 #include "console.h"
+#include "command_handler.h"
 
 #include "usb_cdc_handler.h"
 
